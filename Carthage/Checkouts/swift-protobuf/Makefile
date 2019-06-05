@@ -409,10 +409,10 @@ Tests/SwiftProtobufPluginLibraryTests/DescriptorTestData.swift: build ${PROTOC_G
 	@rm -f $@
 	@echo '// See Makefile how this is generated.' >> $@
 	@echo 'import Foundation' >> $@
-	@echo 'let fileDesciptorSetBytes: [UInt8] = [' >> $@
+	@echo 'let fileDescriptorSetBytes: [UInt8] = [' >> $@
 	@xxd -i < DescriptorTestData.bin >> $@
 	@echo ']' >> $@
-	@echo 'let fileDesciptorSetData = Data(bytes: fileDesciptorSetBytes)' >> $@
+	@echo 'let fileDescriptorSetData = Data(fileDescriptorSetBytes)' >> $@
 
 #
 # Collect a list of words that appear in the SwiftProtobuf library
@@ -515,7 +515,7 @@ regenerate-conformance-protos: build ${PROTOC_GEN_SWIFT}
 check-for-protobuf-checkout:
 	@if [ ! -d "${GOOGLE_PROTOBUF_CHECKOUT}/src/google/protobuf" ]; then \
 	  echo "ERROR: ${GOOGLE_PROTOBUF_CHECKOUT} does not appear to be a checkout of"; \
-	  echo "ERROR:   github.com/google/protobuf. Please check it out or set"; \
+	  echo "ERROR:   github.com/protocolbuffers/protobuf. Please check it out or set"; \
 	  echo "ERROR:   GOOGLE_PROTOBUF_CHECKOUT to point to a checkout."; \
 	  exit 1; \
 	fi
@@ -572,9 +572,9 @@ test-xcode-iOS-debug:
 	xcodebuild -project SwiftProtobuf.xcodeproj \
 		-scheme SwiftProtobuf_iOS \
 		-configuration Debug \
-		-destination "platform=iOS Simulator,name=iPhone 6s,OS=latest" \
+		-destination "platform=iOS Simulator,name=iPhone 8,OS=latest" \
 		-destination "platform=iOS Simulator,name=iPhone 4s,OS=9.0" \
-		-disable-concurrent-testing \
+		-disable-concurrent-destination-testing \
 		test $(XCODEBUILD_EXTRAS)
 
 # 4s - 32bit, 6s - 64bit
@@ -585,9 +585,9 @@ test-xcode-iOS-release:
 	xcodebuild -project SwiftProtobuf.xcodeproj \
 		-scheme SwiftProtobuf_iOS \
 		-configuration Release \
-		-destination "platform=iOS Simulator,name=iPhone 6s,OS=latest" \
+		-destination "platform=iOS Simulator,name=iPhone 8,OS=latest" \
 		-destination "platform=iOS Simulator,name=iPhone 4s,OS=9.0" \
-		-disable-concurrent-testing \
+		-disable-concurrent-destination-testing \
 		test ENABLE_TESTABILITY=YES $(XCODEBUILD_EXTRAS)
 
 test-xcode-macOS-debug:

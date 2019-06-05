@@ -65,7 +65,7 @@ struct ProtobufUnittest_TestLiteImportsNonlite {
   /// Returns true if `message` has been explicitly set.
   var hasMessage: Bool {return _storage._message != nil}
   /// Clears the value of `message`. Subsequent reads from it will return its default value.
-  mutating func clearMessage() {_storage._message = nil}
+  mutating func clearMessage() {_uniqueStorage()._message = nil}
 
   /// Verifies that transitive required fields generates valid code.
   var messageWithRequired: ProtobufUnittest_TestRequired {
@@ -75,7 +75,7 @@ struct ProtobufUnittest_TestLiteImportsNonlite {
   /// Returns true if `messageWithRequired` has been explicitly set.
   var hasMessageWithRequired: Bool {return _storage._messageWithRequired != nil}
   /// Clears the value of `messageWithRequired`. Subsequent reads from it will return its default value.
-  mutating func clearMessageWithRequired() {_storage._messageWithRequired = nil}
+  mutating func clearMessageWithRequired() {_uniqueStorage()._messageWithRequired = nil}
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -148,18 +148,18 @@ extension ProtobufUnittest_TestLiteImportsNonlite: SwiftProtobuf.Message, SwiftP
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  func _protobuf_generated_isEqualTo(other: ProtobufUnittest_TestLiteImportsNonlite) -> Bool {
-    if _storage !== other._storage {
-      let storagesAreEqual: Bool = withExtendedLifetime((_storage, other._storage)) { (_args: (_StorageClass, _StorageClass)) in
+  static func ==(lhs: ProtobufUnittest_TestLiteImportsNonlite, rhs: ProtobufUnittest_TestLiteImportsNonlite) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
-        let other_storage = _args.1
-        if _storage._message != other_storage._message {return false}
-        if _storage._messageWithRequired != other_storage._messageWithRequired {return false}
+        let rhs_storage = _args.1
+        if _storage._message != rhs_storage._message {return false}
+        if _storage._messageWithRequired != rhs_storage._messageWithRequired {return false}
         return true
       }
       if !storagesAreEqual {return false}
     }
-    if unknownFields != other.unknownFields {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }

@@ -133,7 +133,8 @@ public struct Google_Protobuf_Any {
   // methods supported on all messages.
 
   /// A URL/resource name that uniquely identifies the type of the serialized
-  /// protocol buffer message. The last segment of the URL's path must represent
+  /// protocol buffer message. This string must contain at least
+  /// one "/" character. The last segment of the URL's path must represent
   /// the fully qualified name of the type (as in
   /// `path/google.protobuf.Duration`). The name should be in a canonical form
   /// (e.g., leading "." is not accepted).
@@ -222,12 +223,12 @@ extension Google_Protobuf_Any: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public func _protobuf_generated_isEqualTo(other: Google_Protobuf_Any) -> Bool {
-    if _storage !== other._storage {
-      let storagesAreEqual: Bool = _storage.isEqualTo(other: other._storage)
+  public static func ==(lhs: Google_Protobuf_Any, rhs: Google_Protobuf_Any) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = lhs._storage.isEqualTo(other: rhs._storage)
       if !storagesAreEqual {return false}
     }
-    if unknownFields != other.unknownFields {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
