@@ -1,16 +1,6 @@
-## ChromeCastCore: An open source implementation of the Google Cast SDK for macOS
+## ChromeCastCore: An open source implementation of the Google Cast SDK for macOS and iOS
 
 This framework implements the Google Cast APIs so they can be used in macOS apps. Google provides an official SDK but it is only for iOS and closed source.
-
-### 🐉 Here be dragons
-
-This repository exists as a dependency for my [Apple Events](https://github.com/insidegui/AppleEvents) and [WWDC](/insidegui/WWDC) apps.
-
-**Any external contribution that's outside the scope of the project and/or requires changes to the the apps mentioned above will not be accepted. If you're looking for a more generic library with support to more features and platforms, check out [OpenCastSwift](https://github.com/mhmiles/opencastswift).**
-
-### OS Support
-
-I have only tested on 10.12, but it should work on 10.11 and even on iOS (with some minor changes).
 
 ### Basic usage
 
