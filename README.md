@@ -1,6 +1,8 @@
 ## ChromeCastCore: An open source implementation of the Google Cast SDK for macOS and iOS
 
-This framework implements the Google Cast APIs so they can be used in macOS apps. Google provides an official SDK but it is only for iOS and closed source.
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
+This framework implements the Google Cast APIs for use with macOS and iOS as an open source distribution. Google provides an official SDK but it is only for iOS and closed source.
 
 ### Basic usage
 
